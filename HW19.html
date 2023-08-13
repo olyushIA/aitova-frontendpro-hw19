@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        // Створення класу "Людина"
+        function Human (name, gender) {
+            this.name = name;
+            this.gender = gender;
+        }
+
+        class Apartment {
+            constructor() {
+                this.residents = []; // Масив жителів
+            }
+
+            addResident(human) {
+                if (human instanceof Human) {
+                    this.residents.push(human);
+                    console.log(`${human.name} був(ла) доданий(а) до жителів квартири.`);
+                } else {
+                    console.log("Невірний тип даних. Потрібно передати екземпляр класу Людина.");
+                }
+                }
+        }
+
+        class House {
+            constructor(maxApartments) {
+                this.apartments = []; // Масив квартир
+                this.maxApartments = maxApartments; // макс. кількість квартир
+            }
+
+            addApartment(apartment) {
+                if (this.apartments.length < this.maxApartments) {
+                    this.apartments.push(apartment);
+                    console.log("Квартира була додана до будинку.")
+                } else {
+                    console.log("Досягнуто максимальну кількість квартир у будинку.")
+                }
+            }
+        }
+
+        // Створення екземпляру класу "Будинок" з максимальною кількістю квартир 5
+        const house = new House (5);
+
+        // Створення екземпляру класу "Квартира"
+        const apartment = new Apartment();
+
+        // Створення екземплярів класу "Квартира"
+        const apartment1 = new Apartment();
+        const apartment2 = new Apartment();
+        
+        // Створення екземплярів класу "Людина"
+        const human1 = new Human("John", "male");
+        const human2 = new Human("Sarah", "female");
+
+        // Додавання квартир до будинку
+        house.addApartment(apartment1);
+        house.addApartment(apartment2);
+
+        // Додавання жителів до квартири
+        apartment1.addResident(human1);
+        apartment1.addResident(human2);
+
+        console.log(house.apartments);
+    </script>
+</body>
+</html>
